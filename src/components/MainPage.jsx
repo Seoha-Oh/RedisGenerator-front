@@ -93,7 +93,7 @@ const MainPage = () => {
     <MainContainer>
       <RowContainer>
         <RowWrapper>
-          <SimpleInput label="Domain" onChange={handleDomainChange} />
+          <SimpleInput label="domain" onChange={handleDomainChange} />
         </RowWrapper>
         <RowWrapper>
           <SimpleRadio
