@@ -1,12 +1,13 @@
 import { Button } from "@mui/material";
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import SimpleInput from "./common/Input";
 import SimpleRadio from "./common/Radio";
 import SimpleSelect from "./common/Select";
 
-import { MainContainer, RowWrapper, RowContainer } from "./MainPage.styles";
+import { MainContainer, RowWrapper, RowContainer } from "./GeneratePage.styles";
 
 const initvalue = {
   domain: "",
@@ -33,7 +34,9 @@ const policyLabels = [
   { label: "volatile-ttl" },
 ];
 
-const MainPage = () => {
+const GeneratePage = () => {
+  const navigate = useNavigate();
+
   const [domainValue, setDomainValue] = useState("");
   const [memoryValue, setMemoryValue] = useState(3);
   const [policyValue, setPolicyValue] = useState("noeviction");
@@ -59,12 +62,11 @@ const MainPage = () => {
       evictionPolicy: policyValue,
       password: passwordValue,
     };
-
-    console.log("create", params);
   };
 
   const onClose = () => {
     init();
+    navigate("/");
   };
 
   const handleDomainChange = (event) => {
@@ -98,6 +100,7 @@ const MainPage = () => {
   return (
     <MainContainer>
       <RowContainer>
+        <h3>🔨 Generate your Redis!</h3>
         <RowWrapper>
           <SimpleInput label="domain" onChange={handleDomainChange} />
         </RowWrapper>
@@ -131,4 +134,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default GeneratePage;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, InputLabel } from "@mui/material";
+import { Input } from "@mui/material";
 import styled from "@emotion/styled";
 
 const InputWrapper = styled.div`
@@ -8,11 +8,17 @@ const InputWrapper = styled.div`
   gap: 1.5rem;
 `;
 
+const InputLabel = styled.p``;
+
 const SimpleInput = ({ label = "", type = "text", onChange }) => {
   return (
     <InputWrapper>
       <InputLabel>{label}</InputLabel>
-      <Input type={type} onChange={onChange} />
+      <Input
+        type={type}
+        onChange={onChange}
+        style={{ fontFamily: "MonoplexKR-Regular sans-serif" }}
+      />
     </InputWrapper>
   );
 };
