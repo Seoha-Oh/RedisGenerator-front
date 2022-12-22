@@ -1,12 +1,19 @@
 import { Button } from "@mui/material";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SimpleInput from "./common/Input";
 import SimpleRadio from "./common/Radio";
 import SimpleSelect from "./common/Select";
 
 import { MainContainer, RowWrapper, RowContainer } from "./MainPage.styles";
+
+const initvalue = {
+  domain: "",
+  memory: 3,
+  policy: "noeviction",
+  password: "",
+};
 
 const radiosLabels = [
   { label: "3G", value: 3 },
@@ -32,6 +39,14 @@ const MainPage = () => {
   const [policyValue, setPolicyValue] = useState("noeviction");
   const [passwordValue, setPasswordValue] = useState("");
 
+  const init = () => {
+    const { domain, memory, policy, password } = initvalue;
+    setDomainValue(domain);
+    setMemoryValue(memory);
+    setPolicyValue(policy);
+    setPasswordValue(password);
+  };
+
   const onCreate = () => {
     const params = {
       domain: domainValue,
@@ -43,7 +58,7 @@ const MainPage = () => {
   };
 
   const onClose = () => {
-    console.log("closed");
+    init();
   };
 
   const handleDomainChange = (event) => {
@@ -69,6 +84,10 @@ const MainPage = () => {
 
     setPasswordValue(value);
   };
+
+  useEffect(() => {
+    return () => init();
+  }, []);
 
   return (
     <MainContainer>
