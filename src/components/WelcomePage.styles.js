@@ -31,10 +31,12 @@ background-color: transparent;
 
 
 & h1{
+    font-size: 3rem;
 }
 
 & p{
-    font-size:13px;
+    line-height: 24px;
+    font-size:15px;
     margin: 0;
 }
 
@@ -47,11 +49,11 @@ margin-right:3em;
 padding: 0.2rem 1rem;
 margin: 1.5rem;
 
-font-weight: 600;
-font-size: 14px;
+font-weight: 500;
+font-size: 15px;
 line-height: 25px;
 text-decoration: none;
-text-transform: uppercase;
+// text-transform: uppercase;
 vertical-align: middle;
 overflow: hidden;
 
@@ -88,6 +90,10 @@ border-radius:1rem;
 	width: 50px;
 	z-index: -1;
 }
+`
 
+export const WelcomeBoxFooter = styled.div`
+font-family: 'La Belle Aurore', cursive;
+font-size: 15px;
 
 `

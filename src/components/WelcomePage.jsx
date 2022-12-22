@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
 import React from "react";
 
 import {
   WelcomeContainer,
   WelcomeCenterBox,
   RouteGenerateButton,
+  WelcomeBoxFooter,
 } from "./WelcomePage.styles";
 
 const WelcomePage = (props) => {
@@ -19,8 +19,8 @@ const WelcomePage = (props) => {
           저희 "Redis Generator"는 어쩌구 저쩌구를 통해 이러한 기능을
           제공합니다.
         </p>
-        <RouteGenerateButton>Generate Redis</RouteGenerateButton>
-        <p>by seoha-oh and sieun-lee</p>
+        <RouteGenerateButton>Generate Redis ❕</RouteGenerateButton>
+        <WelcomeBoxFooter>by seoha-oh and sieun-lee</WelcomeBoxFooter>
       </WelcomeCenterBox>
     </WelcomeContainer>
   );
