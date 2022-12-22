@@ -7,7 +7,10 @@ import {
   WelcomeBoxFooter,
 } from "./WelcomePage.styles";
 
+import { useNavigate } from "react-router-dom";
+
 const WelcomePage = (props) => {
+  const navigate = useNavigate();
   return (
     <WelcomeContainer>
       <WelcomeCenterBox>
@@ -19,7 +22,13 @@ const WelcomePage = (props) => {
           저희 "Redis Generator"는 어쩌구 저쩌구를 통해 이러한 기능을
           제공합니다.
         </p>
-        <RouteGenerateButton>Generate Redis ❕</RouteGenerateButton>
+        <RouteGenerateButton
+          onClick={() => {
+            navigate("/generate-redis");
+          }}
+        >
+          Generate Redis ❕
+        </RouteGenerateButton>
         <WelcomeBoxFooter>by seoha-oh and sieun-lee</WelcomeBoxFooter>
       </WelcomeCenterBox>
     </WelcomeContainer>
