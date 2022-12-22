@@ -48,12 +48,18 @@ const MainPage = () => {
   };
 
   const onCreate = () => {
+    if (!domainValue) {
+      alert("domain 항목을 입력해주세요 💦");
+      return;
+    }
+
     const params = {
       domain: domainValue,
       redisMemory: memoryValue,
       evictionPolicy: policyValue,
       password: passwordValue,
     };
+
     console.log("create", params);
   };
 
