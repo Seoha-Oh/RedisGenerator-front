@@ -8,7 +8,7 @@ import WelcomePage from "./components/WelcomePage";
 const theme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: "MonoplexKR-Regular,Segoe UI, Roboto, sans-serif ",
+      fontFamily: "Raleway , sans-serif",
       textTransform: "none",
     },
   },
