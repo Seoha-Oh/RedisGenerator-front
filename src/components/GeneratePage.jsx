@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SimpleInput from "./common/Input";
 import SimpleRadio from "./common/Radio";
-import SimpleSelect from "./common/Select";
+import SimpleSelect from "./common/SimpleSelect";
 
 import { MainContainer, RowWrapper, RowContainer } from "./GeneratePage.styles";
 
@@ -24,14 +24,38 @@ const radiosLabels = [
 ];
 
 const policyLabels = [
-  { label: "noeviction" },
-  { label: "allkeys-lru" },
-  { label: "volatile-lru" },
-  { label: "allkeys-lfu" },
-  { label: "volatile-lfu" },
-  { label: "allkeys-random" },
-  { label: "volatile-random" },
-  { label: "volatile-ttl" },
+  {
+    label: "noeviction",
+    info: `maxmemory에 도달하면 쓰기/삭제 작업시 오류를 반환합니다. `,
+  },
+  {
+    label: "allkeys-lru",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 최근에 사용하지 않은 키를 제거합니다.`,
+  },
+  {
+    label: "volatile-lru",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 TTL이 설정된 키들 중 최근에 사용하지 않은 키를 제거합니다.`,
+  },
+  {
+    label: "allkeys-lfu",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 사용빈도수가 가장 적은 키를 제거합니다. 최근 저장된 키라도 사용 빈도수가 적다면 대상이 될 수 있습니다.`,
+  },
+  {
+    label: "volatile-lfu",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 TTL이 설정된 키들 중 사용빈도 수가 적은 키를 제거합니다. 최근 저장된 키라도 사용 빈도수가 적다면 대상이 될 수 있습니다.`,
+  },
+  {
+    label: "allkeys-random",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 무작위로 키를 제거합니다.`,
+  },
+  {
+    label: "volatile-random",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 TTL이 설정된 키들 중 무작위로 키를 제거합니다.`,
+  },
+  {
+    label: "volatile-ttl",
+    info: `새로 추가된 데이터의 용량을 확보하기 위해 TTL이 짧은 키를 제거합니다.`,
+  },
 ];
 
 const GeneratePage = () => {
@@ -62,6 +86,7 @@ const GeneratePage = () => {
       evictionPolicy: policyValue,
       password: passwordValue,
     };
+    console.log(params);
   };
 
   const onClose = () => {
@@ -92,10 +117,6 @@ const GeneratePage = () => {
 
     setPasswordValue(value);
   };
-
-  useEffect(() => {
-    return () => init();
-  }, []);
 
   return (
     <MainContainer>
